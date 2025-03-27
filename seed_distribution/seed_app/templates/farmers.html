@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Farmers - Seed Distribution{% endblock %}
+{% block content %}
+<h1 class="text-center text-success fw-bold">Farmers</h1>
+<ul class="list-group">
+    {% for farmer in farmers %}
+        <li class="list-group-item">
+            <strong>{{ farmer.user.username }}</strong> - {{ farmer.phone }}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

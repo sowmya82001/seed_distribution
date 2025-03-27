@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard - Seed Distribution{% endblock %}
+{% block content %}
+<h1 class="text-center text-primary fw-bold">Seed Distribution Dashboard</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card shadow mb-4">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Seeds</h4>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    {% for seed in seeds %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <strong>{{ seed.name }}</strong>
+                            <span class="badge bg-success">{{ seed.quantity }} kg</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <a href="{% url 'seeds' %}" class="btn btn-primary mt-3">View All Seeds</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow mb-4">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0">Farmers</h4>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    {% for farmer in farmers %}
+                        <li class="list-group-item">
+                            <strong>{{ farmer.user.username }}</strong> - {{ farmer.phone }}
+                        </li>
+                    {% endfor %}
+                </ul>
+                <a href="{% url 'farmers' %}" class="btn btn-success mt-3">View All Farmers</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow mb-4">
+            <div class="card-header bg-warning text-dark">
+                <h4 class="mb-0">Distributions</h4>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    {% for distribution in distributions %}
+                        <li class="list-group-item">
+                            <strong>{{ distribution.seed.name }}</strong> → 
+                            <strong>{{ distribution.farmer.user.username }}</strong> 
+                            on {{ distribution.date_distributed }}
+                        </li>
+                    {% endfor %}
+                </ul>
+                <a href="{% url 'distributions' %}" class="btn btn-warning mt-3">View All Distributions</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

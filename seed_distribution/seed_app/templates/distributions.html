@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Distributions - Seed Distribution{% endblock %}
+{% block content %}
+<h1 class="text-center text-warning fw-bold">Seed Distributions</h1>
+<ul class="list-group">
+    {% for distribution in distributions %}
+        <li class="list-group-item">
+            <strong>{{ distribution.seed.name }}</strong> → 
+            <strong>{{ distribution.farmer.user.username }}</strong> 
+            on {{ distribution.date_distributed }}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

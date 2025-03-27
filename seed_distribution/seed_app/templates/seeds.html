@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Seeds - Seed Distribution{% endblock %}
+{% block content %}
+<h1 class="text-center text-primary fw-bold">Seeds</h1>
+<ul class="list-group">
+    {% for seed in seeds %}
+        <li class="list-group-item">
+            <strong>{{ seed.name }}</strong> - {{ seed.quantity }} kg
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
